@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 """ Serializes and deserializes instances in JSON."""
 import json
-from ..base_model import BaseModel
+from models.base_model import BaseModel
 from models.user import User
-
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class FileStorage:
     """ Represents how a file is stored."""
@@ -36,7 +40,9 @@ class FileStorage:
                 for anOpen in json.load(fopen).values():
                     className = anOpen["__class__"]
                     del anOpen["__class__"]
-                    cls = {"User": User, "BaseModel": BaseModel}[className]
+                    cls = {"User": User, "BaseModel": BaseModel, "State": State,  # Added other classes
+                           "City": City, "Amenity": Amenity, "Place": Place,
+                           "Review": Review}[className]
                     self.new(cls(**anOpen))
         except FileNotFoundError:
             return
