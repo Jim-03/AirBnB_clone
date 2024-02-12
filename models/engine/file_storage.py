@@ -2,6 +2,7 @@
 """ Serializes and deserializes instances in JSON."""
 import json
 from ..base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -35,6 +36,7 @@ class FileStorage:
                 for anOpen in json.load(fopen).values():
                     className = anOpen["__class__"]
                     del anOpen["__class__"]
-                    self.new(eval(className)(**anOpen))
+                    cls = {"User": User, "BaseModel": BaseModel}[className]
+                    self.new(cls(**anOpen))
         except FileNotFoundError:
             return
