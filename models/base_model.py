@@ -29,7 +29,8 @@ class BaseModel:
         Returns:
             string representing the object.
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        name = self.__class__.__name__,
+        return "[{}] ({}) {}".format(name, self.id, self.__dict__)
 
     def save(self):
         """ Updates to the current date and time. """
