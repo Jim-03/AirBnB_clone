@@ -3,6 +3,12 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -38,7 +44,8 @@ class HBNBCommand(cmd.Cmd):
             return
         argumentList = arg.split()
         className = argumentList[0]
-        if className not in ["BaseModel"]:
+        if className not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
             return
         New = BaseModel()
@@ -53,7 +60,8 @@ class HBNBCommand(cmd.Cmd):
             return
         argumentList = arg.split()
         className = argumentList[0]
-        if className not in ["BaseModel"]:
+        if className not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
             return
         if len(argumentList) <= 1:
@@ -75,7 +83,8 @@ class HBNBCommand(cmd.Cmd):
             return
         argumentList = arg.split()
         className = argumentList[0]
-        if className not in ["BaseModel"]:
+        if className not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
             return
         if len(argumentList) < 2:
@@ -98,7 +107,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             argumentList = arg.split()
             className = argumentList[0]
-            if className not in ["BaseModel"]:
+            if className not in ["BaseModel", "User", "State",
+                                 "City", "Amenity", "Place", "Review"]:
                 print("** class doesn't exist **")
                 return
             objs = {
@@ -116,7 +126,8 @@ class HBNBCommand(cmd.Cmd):
             return
         argumentList = arg.split()
         className = argumentList[0]
-        if className not in ["BaseModel"]:
+        if className not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
             return
         if len(argumentList) < 2:
