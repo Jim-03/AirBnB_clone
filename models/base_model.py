@@ -29,7 +29,7 @@ class BaseModel:
         Returns:
             string representing the object.
         """
-        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """ Updates to the current date and time. """
@@ -41,7 +41,7 @@ class BaseModel:
             obj_dict: the dictionary representation of the object.
         """
         obj_dict = self.__dict__.copy()
-        obj_dict['__class__'] = type(self).__name__
         obj_dict['created_at'] = self.created_at.isoformat()
         obj_dict['updated_at'] = self.updated_at.isoformat()
+        obj_dict['__class__'] = type(self).__name__
         return obj_dict
